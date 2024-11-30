@@ -3,217 +3,353 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background: #f4f4f9;
+    background-color: #f4f4f4;
     color: #333;
-    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-/* Responsive Layout */
+/* Container */
 .container {
-    width: 90%;
-    max-width: 1200px;
+    width: 80%;
     margin: 0 auto;
     padding: 20px;
 }
 
-/* Header Styles */
-header {
-    text-align: center;
-    padding: 50px 20px;
-    background: linear-gradient(135deg, #4f46e5, #6c63ff);
-    color: #fff;
-}
-
-header .profile-photo {
+/* Profile Photo */
+.profile-photo {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    border: 5px solid #fff;
-    margin-bottom: 20px;
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
-header .profile-photo:hover {
+.profile-photo:hover {
     transform: scale(1.1);
 }
 
-header h1 {
+/* Header */
+header {
+    background-color: #333;
+    color: white;
+    padding: 50px 0;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+}
+
+/* 3D Hover Text Effects */
+header h1, header p {
+    margin: 0;
     font-size: 2.5rem;
-    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+header h1 {
+    font-size: 3rem;
+    transition: transform 0.3s ease;
+}
+
+header h1:hover {
+    transform: rotateX(5deg) rotateY(5deg);
+    color: #f39c12; /* Color change on hover */
 }
 
 header p {
     font-size: 1.2rem;
-    margin-bottom: 20px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* Navigation Bar */
-nav {
-    text-align: center;
-    background: #333;
-    padding: 10px 0;
+header p:hover {
+    opacity: 1;
+    transform: translateY(-5px);
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+/* Projects Section */
+#projects {
+    background-color: #f9f9f9;
+    padding: 50px 0;
 }
 
-nav ul li {
-    display: inline;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease;
-}
-
-nav ul li a:hover {
-    color: #6c63ff;
-}
-
-/* Section Styles */
-section {
-    margin: 50px 0;
-    padding: 30px 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-section:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-section h2 {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 20px;
-    color: #4f46e5;
-}
-
-/* Project Cards */
 .project-card {
-    background: #f9f9fc;
+    background-color: #fff;
     padding: 20px;
-    border-radius: 10px;
     margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    perspective: 1000px; /* Enable 3D */
 }
 
 .project-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-15px) rotateY(5deg) scale(1.05);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
 }
 
 .project-card h3 {
-    font-size: 1.5rem;
-    color: #333;
+    margin-top: 0;
 }
 
-.project-card p {
-    margin: 10px 0;
-}
-
-.project-card .btn {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px;
-    background: #4f46e5;
-    color: #fff;
-    text-decoration: none;
+.project-card img {
+    max-width: 100%;
     border-radius: 5px;
-    transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.project-card .btn:hover {
-    background: #6c63ff;
-    transform: scale(1.1);
 }
 
 /* Skills Section */
-ul {
-    list-style: none;
+#skills {
+    padding: 50px 0;
+    text-align: center;
+}
+
+#skills ul {
+    list-style-type: none;
     padding: 0;
 }
 
-ul li {
-    margin: 10px 0;
-    padding: 10px;
-    background: #eef2ff;
-    border-radius: 5px;
-    transition: transform 0.3s ease;
+#skills li {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    position: relative;
+    animation: skill-animation 2s ease-in-out infinite;
 }
 
-ul li:hover {
-    transform: scale(1.05);
+@keyframes skill-animation {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    50% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
 }
 
 /* Contact Section */
+#contact {
+    background-color: #f4f4f4;
+    padding: 50px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+#contact:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.contact-info p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #333;
+    letter-spacing: 0.5px;
+    line-height: 1.6;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
 .contact-info p a {
-    color: #4f46e5;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-info p a:hover {
+    color: #4CAF50;
+    transform: translateX(5px);
+}
+
+.contact-info a {
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.contact-info p:hover {
+    transform: translateY(-5px);
+    color: #555;
+}
+
+/* Hover effects for individual contact items */
+.contact-info a {
+    position: relative;
+    display: inline-block;
+    padding: 0 5px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.contact-info a:hover {
+    border-color: #4CAF50;
+    color: #4CAF50;
+    transform: translateY(-2px);
+}
+
+/* Adding subtle 3D shadow to contact items */
+.contact-info p, .contact-info a {
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-info p:hover, .contact-info a:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Subtle 3D animation on hover for the whole contact section */
+#contact .container {
+    perspective: 1200px;
+}
+
+#contact .container:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    transform: translateZ(-100px);
+    opacity: 0.05;
+    z-index: -1;
+}
+
+/* Contact Section */
+#contact {
+    background-color: #fff;
+    padding: 50px 0;
+}
+
+.contact-info p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.contact-info a {
+    color: #333;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.contact-info p a:hover {
-    color: #6c63ff;
+.contact-info a:hover {
+    color: #4CAF50;
 }
 
 /* Footer */
 footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
     text-align: center;
-    padding: 20px;
-    background: #333;
-    color: #fff;
-    margin-top: 50px;
 }
 
-/* Search Bar */
-.search-bar {
-    text-align: center;
-    margin: 30px 0;
+/* 3D Card Flip Effect */
+.card {
+    width: 200px;
+    height: 300px;
+    perspective: 1500px; /* Depth of the flip effect */
+    margin: 20px;
 }
 
-.search-bar input[type="text"] {
-    width: 80%;
-    max-width: 500px;
-    padding: 10px 20px;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: border 0.3s ease;
+.card-inner {
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
 }
 
-.search-bar input[type="text"]:focus {
-    border-color: #4f46e5;
-    outline: none;
+.card:hover .card-inner {
+    transform: rotateY(180deg); /* Flipping the card */
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2rem;
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.card-front {
+    background-color: #fff;
+}
+
+.card-back {
+    background-color: #333;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+/* Typing Effect */
+.typing {
+    font-family: 'Courier New', monospace;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: typing 4s steps(40) 1s forwards;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
     }
-
-    header p {
-        font-size: 1rem;
-    }
-
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .project-card {
-        padding: 15px;
+    to {
+        width: 100%;
     }
 }
+
+/* 3D Text Shadow Effect */
+.text-shadow-3d {
+    font-size: 3rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0px 0px 25px rgba(0, 0, 0, 0.1);
+    transform: rotateX(20deg);
+}
+
+.text-shadow-3d:hover {
+    color: #f39c12;
+    transform: rotateX(0deg);
+}
+
+/* Image Zoom */
+.img-zoom {
+    transition: transform 0.5s ease;
+}
+
+.img-zoom:hover {
+    transform: scale(1.1);
+}
+
+/* Ripple Effect */
+.ripple {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.ripple:after {
+    content: '';
+    position: absolute;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple-animation 0.6s linear;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.ripple:active:after {
+    transform: scale(0);
+    animation: ripple-animation 0.6s linear;
+}
+
